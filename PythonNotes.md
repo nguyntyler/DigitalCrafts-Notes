@@ -108,3 +108,40 @@ if 0 == "Hello":
     print("This will not print.")
 ```
 ___
+## **User Input**
+
+***Code blocking*** occurs when the terminal waits for further instructions before continuing the code. Usually after the user asks for an input.
+
+Input often returns whatever the user inputs as a string. If you need to use the input as another data type, you must ***type cast***.
+
+```Python
+age = int(input("What's your age?"))
+
+a = "10" #This is a string.
+
+int(a) #This converts the string to an integer.
+```
+___
+## **Nesting & Conditionals**
+Coding inside code.
+```Python
+pet_name = input("What is your pet's name?\n> ")
+if len(pet_name) < 3:
+    print("That name is too short.")
+elif len(pet_name) > 3:
+    print(f"Aww, sweet {pet_name}!")
+
+    if pet_name == "Shadow":
+        print("El gato diablo!")
+    elif pet_name == "Daisy":
+        print("Good dog!")
+else:
+    print("That's as short as 'Tom'.")
+```
+|Conditional Operators    |     |
+|-----------|-|
+| and        | Both conditions must be true. |
+| or         | Checks for the first Truthy condition. |
+| not         | Makes a Truthy condition Falsey and vise-versa. |
+These operators also work alongside comparison operators.
+___
