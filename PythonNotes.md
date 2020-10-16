@@ -89,7 +89,8 @@ ___
 ***Booleans*** are either True or False.
 
 ***Code blocks*** are sections of code that runs should an if-statement runs True.
-___
+
+
 |Comparison Operators |  |
 |-----|-|
 | ==  | Equals to. |
