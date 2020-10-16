@@ -143,5 +143,6 @@ else:
 | and        | Both conditions must be true. |
 | or         | Checks for the first Truthy condition. |
 | not         | Makes a Truthy condition Falsey and vise-versa. |
+
 These operators also work alongside comparison operators.
 ___
