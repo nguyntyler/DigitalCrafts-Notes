@@ -7,6 +7,7 @@ A sequence is a data type that stores multiple values.
     - Tuples
 
 # Lists
+Lists are a data type.
 
 Lists are ***mutable***, meaning they are able to be changed. They tend to be more versatile and general-purposed.
 
@@ -55,6 +56,15 @@ print(todo[2:])
 
 Empty indexes will print either starting from the beginning or to the end. Using negative numbers will do the opposite.
 
+Using the ***len()*** function on a list will count how many items are in that list. This differs from strings in that strings count how many letters are in that string.
+```Python
+list = [1, 2, 3, 4, "hello people"]
+
+print(len(list))
+
+# Returns 5.
+```
+
 # Iteration
 It is possible to access each item in a list automatically. This is done through loops.
 
@@ -78,6 +88,18 @@ for i in todo:
 ```
 This will print out each indiviual item of todo as it passes through them.
 
+***Enumerate*** will create two variables in the conditional statement.
+```Python
+for idx, i in enumerate(todo):
+    print(idx, i)
+```
+It shows the index of the item alongside the item.
+```Python
+0 "pet the cat"
+1 "5"
+2 ["do one", "do two"]
+```
+
 # Modification
 There are only three ways to add to a list:
 
@@ -88,9 +110,9 @@ There are only three ways to add to a list:
 ### Append
 Adds an item to the end of the list.
 ### Concatenate
-Combines two lists together.
+Combines two lists together. Cannot concatenate a single item. To do that, you can surround the item within a bracket to turn it into a list. 
 ### Extend
-Does the same thing concatenate does but in a method.
+Does the same thing concatenate does but in a method. Adds a list.
 
 > When you concatenate, you produce a new list. This means you must assign it to a variable in order to use it again.
 
@@ -210,3 +232,51 @@ number = number[:-1] # All but the last.
 number = number + "000"
 ```
 Each of these reassigns the variable a new data type. 
+
+# Dictionary
+Dictionaries are made up of key-value pairs.
+
+    - Indicated by braces. {}
+    - Has a key and a value.
+    - Key value pair separated by colon.
+    - Can have multiple values for a key.
+
+***Keys*** are data types that points to a value. In a sense, they are like variables will a value. Usually they are strings.
+
+```Python
+movie = {
+    "name": "Star Wars",
+    "episode": 1
+    "year": "1997
+    "hero": ["Luke", "Leia", "Han"]
+}
+```
+To access a key value pair, do:
+```Python
+print(movie["year"])
+
+good_guys = movie["hero"]
+print(good_guys[1])
+good_guys.append("Yoda")
+```
+```Python
+search = "hero"
+
+if search in movie:
+    print(movie[search])
+else:
+    print("Item not found")
+```
+___
+### Looping
+
+```Python
+for key in movie:
+    print(key)
+```
+This will loop through the dictionary and just print the keys.
+```Python
+for key in movie:
+    print(movie[key])
+```
+This will print out the value instead.
