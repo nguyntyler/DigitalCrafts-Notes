@@ -50,4 +50,13 @@ Relative : Can be moved with other declarations.
 
 Sticky : Based on the document but stays on the screen.
 ___
-## Flexbox
+## Libraries
+In the HTML, use the "link" tag to connect the library. Similar to linking css file.
+
+CDN (Content Deliverly Network) is a URL to a library. It is also used. It's more efficient than having it on your own server. It's good if your product is online. It's not good if it's a standalone project that doesn't need to be online or if you have an unstable CDN that's still updating.
+
+Most CDNs have different versions that you can use.
+
+A lot of CDNs also have javascript URLs that compliment the css URL.
+
+To use your own stylesheets after we included the links, add it after the libraries under the CDN.
