@@ -208,3 +208,237 @@ foo(function(){
 
 foo(()=>console.log('do something'))
 ```
+# Arrays
+They function the same way as lists in Python.
+```js
+let myArr = ['a', 'b', 'c', false, 0]
+
+console.log(myArr[0])
+// outputs 'a'
+```
+
+In Python, we had the .append method to add stuff to the end of a list. In JS, we have .push.
+
+> myArr.push('d')
+
+To remove the last item, we do .pop. However, this also returns a value.
+
+> let removed = myArr.pop()
+
+This means we can assign the removed item to a variable.
+
+To affect the beginning of a list by adding, we do .unshift.
+
+> myArr.unshift('z')
+
+Removing from the beginning uses .shift.
+
+> myArr.shift()
+
+```js
+let anothArr = ['a', 'b', 'c', 'd']
+
+for(let i = 0; i < anothArr.length; i++){
+    console.log(anothArr[i])
+}
+```
+This is the same as the for loops we were doing before. The .length sets the length of the list to a value. This is old, but still viable.
+
+The modern way is using a for-each:
+
+```js
+anothArr.forEach(function(letter, idx){
+    console.log(letter, idx)
+})
+```
+forEach has preset parameters. The first argument, which is letter, is each item in the list. The second is the index (can be any word) that lists the index.
+
+# Objects
+### **As Dictionaries**
+In JS, objects are literal instances of the root object of JS.
+
+```js
+let myObj = {}
+
+let newObj = {
+    name:'Tyler',
+    age:24,
+    tall:false,
+}
+```
+In JS, dictionaries will automatically turn everything into a string. The key also does not need to be in quotations like Python.
+
+You can also call on it like Python.
+
+```js
+console.log(newObj[name])
+```
+
+However, in JS you can also call on it like a method. Which is the standard way.
+
+```js
+console.log(newObj.name, newObj.age)
+```
+
+To change a value, you do:
+
+```js
+newObj.name = 'Tyler Nguyen'
+
+newObj.name += ' Okurr'
+```
+
+You can add a new key:value pair:
+
+```js
+newObj.gender = Male
+```
+
+To remove a pair:
+
+```js
+delete newObj.tall
+```
+
+```js
+for(foo in newObj){
+    console.log(foo)
+    console.log(newObj[foo])
+}
+```
+This is a way to show the key value pair. When you do the for loop, you get the key in the dictionary. This is foo.
+
+```js
+for(foo in newObj){
+    if(!newObj.hasOwnProperty(foo)) continue;
+    console.log(foo, newObj[foo])
+}
+```
+The if statement checks to see if something exists. If it doesn't, it continues. This is the correct way to loop through an object.
+
+# Arrays of Objects
+
+```js
+let people = [
+    {
+        name:'tyler',
+        age:24,
+    },
+    {
+        name:'tony',
+        age:23,
+        gender:'male',
+    }
+]
+
+console.log(people[0].name)
+
+people.forEach(function(person){
+    console.log(person.name+' is'+person.age+' years old.')
+})
+```
+
+# More Objects
+
+Everything is an object in JS. When you use the 'new' function, you instantiate whatever you are 'new'ing.
+
+```js
+console.log(typeof 'yes')
+console.log(typeof new String('yes'))
+
+let myString = 'yes'
+let anotherString = new String('yes')
+
+console.log(myString, myString.length)
+console.log(anotherString, anotherString.length)
+```
+They both output the same thing but anotherString outputs as an object. 
+
+new String creates an instance of the string 'yes'.
+
+```js
+new String('yes') instanceof Object
+// True
+new String('yes') instanceof String
+// True
+```
+
+Functions are also objects. To make an instance of a function and make the instance a type of object:
+
+```js
+function Animal() {}
+let rainbow = new Animal()
+
+
+rainbow instanceof Object
+// true
+```
+
+```js
+function Animal (type, name, noise) {
+    this.name = name;
+    this.type = type;
+    this.noise = noise
+    this.makeNoise = function(){
+        console.log(this.name+' says '+this.noise)
+    }
+}
+
+let shadow = new Animal('cat', 'shadow', 'GROWWWL')
+// shadow now is {name: 'shadow', type: 'cat', noise: 'GROWWWL'}
+// You can now do
+console.log(shadow.name)
+// shadow
+shadow.makeNoise()
+// shadow says GROWWWL
+
+for(att in shadow){
+    console.log(att)
+}
+// name
+// type
+// noise
+// nameNoise
+```
+This pattern is mostly for JS based video games. Not the standard for front-end.
+
+JS is based on prototypes. Not raw inheritence. Prototype is an object carried within an object. 
+
+```js
+Animal.prototype.makeNoise = function(){
+    console.log(this.name+' says '+this.noise)
+}
+
+for(i in shadow){
+    console.log(i)
+}
+// shows makeNoise() which is a problem because makeNoise() is part of the prototype.
+
+for(i in shadow){
+    if(!shadow.hasOwnProperty(i)) continue;
+    console.log(i)
+}
+// now outputs everything shadow does in the above example.
+```
+___
+```js
+let myArr = [1, 2, 3, 4, 5]
+
+myArr.forEach(function(n){
+    console.log(n)
+})
+// forEach is done on the instance of the array myArr. Not on the array itself.
+
+myArr.reverse()
+// [5, 4, 3, 2, 1]
+
+myArray.isArray()
+// Error. myArr.isArray is not a function.
+
+Array.isArray('test')
+// false
+Array.isArray(myArr)
+// true
+```
+
+The math object is done on the actual math object itself. That's why it doesn't have any .prototype.
